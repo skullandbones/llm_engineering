@@ -1,0 +1,20 @@
+Use a virtual Python environment
+python3 -m venv myenv
+
+source myenv/bin/activate
+
+Install Python uv manager
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+Reuse our virtual Python environment by uv, deletes original myenv
+uv sync --active
+
+In vscode, open a Juypter notebook file and ensure "select kernel"
+is using the myenv Python environment.
+
+Use the /home/hf_user/llm_engineering/week1/solutions/day1_with_ollama.ipynb
+instead of the OpenAI day 1 notebook which costs money. 
+ollama pull llama3.2
+
+Note that the Ollama solution is using the OpenAI calls and not the
+new Ollama Python module.
