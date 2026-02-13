@@ -18,3 +18,7 @@ ollama pull llama3.2
 
 Note that the Ollama solution is using the OpenAI calls and not the
 new Ollama Python module.
+
+To update vscode using Microsoft repository, do
+sudo apt update
+sudo apt upgrade
