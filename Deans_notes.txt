@@ -22,3 +22,12 @@ new Ollama Python module.
 To update vscode using Microsoft repository, do
 sudo apt update
 sudo apt upgrade
+
+When using vscode to remotely attach to the Docker container image,
+the localhost ports can be accessed if the ports are manually or
+automatically configured to be forwarded.
+
+In the vscode Juypter notebook when using Gradio web UI, it is
+necessary to use .launch(inbrowser=True) to open a web browser to
+access the automatically forwarded port.
+
