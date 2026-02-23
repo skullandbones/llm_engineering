@@ -13,8 +13,8 @@ load_dotenv(override=True)
 MODEL = "gpt-4.1-nano"
 DB_NAME = str(Path(__file__).parent.parent / "vector_db")
 
-# embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+# embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 RETRIEVAL_K = 10
 
 SYSTEM_PROMPT = """
@@ -28,7 +28,13 @@ Context:
 
 vectorstore = Chroma(persist_directory=DB_NAME, embedding_function=embeddings)
 retriever = vectorstore.as_retriever()
-llm = ChatOpenAI(temperature=0, model_name=MODEL)
+# llm = ChatOpenAI(temperature=0, model_name=MODEL)
+llm = ChatOpenAI(
+    model="llama3",
+    temperature=0,
+    api_key="ollama", # Required by the class, but ignored by Ollama
+    base_url="http://localhost:11434/v1"
+)
 
 
 def fetch_context(question: str) -> list[Document]:
